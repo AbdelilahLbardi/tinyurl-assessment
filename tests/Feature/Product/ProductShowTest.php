@@ -51,6 +51,6 @@ describe('Product show', function () {
 
 function productGetEndpoint(string $id): TestResponse
 {
-    return getJson(route('products.show', $id));
+    return getJson(route('api.products.show', $id));
 }
 

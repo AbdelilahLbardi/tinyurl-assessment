@@ -32,7 +32,7 @@ describe('Category Creation', function () {
 function categoryCreateEndpoint(array $data = []): TestResponse
 {
     return postJson(
-        route('categories.store'),
+        route('api.categories.store'),
         array_merge([
             'name' => 'test name',
         ], $data)
