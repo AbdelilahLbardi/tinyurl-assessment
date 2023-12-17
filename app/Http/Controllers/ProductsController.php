@@ -46,7 +46,7 @@ class ProductsController
 
         $jobsCount = (int)($productCount / $chunkLimit);
 
-        foreach (range(0, $jobsCount) as $index) {
+        for ($i = 0; $i < $jobsCount; $i++) {
             GenerateProductsJob::dispatch();
         }
 
