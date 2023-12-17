@@ -45,7 +45,7 @@ class ProductsController
 
         $jobsCount = (int)($productCount / GenerateProducts::LIMIT);
 
-        foreach (range(0, $jobsCount) as $index) {
+        for ($i = 0; $i < $jobsCount; $i++) {
             GenerateProductsJob::dispatch();
         }
 
