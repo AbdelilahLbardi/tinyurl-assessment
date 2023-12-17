@@ -63,7 +63,7 @@ class ProductsController
         ]);
 
         /** @var Product $product */
-        $product = Product::query()->findOrFail($productId);
+        $product = Product::withTrashed()->findOrFail($productId);
 
         $product->categories()->sync(array_values($data['categories']));
 
