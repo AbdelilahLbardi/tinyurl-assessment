@@ -177,6 +177,80 @@ informations. The products are sorted by top to Deleted. Deleted products will a
 | price       | ASC / DESC   | Sorts by price                     |
 | last-viewed | TRUE / FALSE | returns 10 latests viewed products |
 
+Response example without `last-viewed` param:
+
+```json
+{
+    "data": [
+        {
+            "id": 173,
+            "name": "new name",
+            "price": 100,
+            "description": null,
+            "categories": [],
+            "viewed_at": null,
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": "2023-12-17 15:07:50"
+        },
+        {
+            "id": 175,
+            "name": "new name",
+            "price": 100,
+            "description": null,
+            "categories": [],
+            "viewed_at": null,
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": "2023-12-17 15:07:59"
+        }
+    ],
+    "links": {
+        "first": null,
+        "last": null,
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "path": "https://shop.test/api/products",
+        "per_page": 100,
+        "next_cursor": null,
+        "prev_cursor": null
+    }
+}
+```
+
+Response example with `last-viewed` param.
+
+```json
+{
+    "data": [
+        {
+            "id": 173,
+            "name": "new name",
+            "price": 100,
+            "description": null,
+            "categories": [],
+            "viewed_at": "2023-12-17 15:08:50",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": "2023-12-17 15:07:50"
+        },
+        {
+            "id": 175,
+            "name": "new name",
+            "price": 100,
+            "description": null,
+            "categories": [],
+            "viewed_at": "2023-12-17 15:07:50",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": "2023-12-17 15:07:59"
+        }
+    ]
+}
+```
+
 ## POSTMAN collection
 
 You can import the following [collection](doc/tinyurl_postman_collection.json) to postman to have everything ready.
