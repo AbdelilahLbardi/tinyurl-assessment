@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Actions\Product\CreateProduct;
 use App\Actions\Product\DeleteProduct;
 use App\Actions\Product\FindProduct;
-use App\Actions\Product\GenerateProducts;
 use App\Actions\Product\GetProducts;
 use App\Actions\Product\UpdateProduct;
 use App\Http\Resources\ProductCollection;
@@ -43,7 +42,9 @@ class ProductsController
     {
         $productCount = config('products.generation_limit');
 
-        $jobsCount = (int)($productCount / GenerateProducts::LIMIT);
+        $chunkLimit = config('products.chunk_limit');
+
+        $jobsCount = (int)($productCount / $chunkLimit);
 
         foreach (range(0, $jobsCount) as $index) {
             GenerateProductsJob::dispatch();
@@ -62,7 +63,7 @@ class ProductsController
         ]);
 
         /** @var Product $product */
-        $product = Product::query()->findOrFail($productId);
+        $product = Product::withTrashed()->findOrFail($productId);
 
         $product->categories()->sync(array_values($data['categories']));
 

@@ -49,7 +49,7 @@ describe('Product creation', function () {
 function productCreateEndpoint(array $data = []): TestResponse
 {
     return postJson(
-        route('products.store'),
+        route('api.products.store'),
         array_merge([
             'name' => 'test name',
             'description' => 'test description',

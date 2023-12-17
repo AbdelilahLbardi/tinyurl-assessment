@@ -76,7 +76,7 @@ describe('Product update', function () {
 function productUpdateEndpoint(string $id, array $data = []): TestResponse
 {
     return putJson(
-        route('products.update', $id),
+        route('api.products.update', $id),
         array_merge([
             'name' => 'test name',
             'description' => 'test description',

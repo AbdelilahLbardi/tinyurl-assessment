@@ -41,6 +41,6 @@ describe('Product deletion', function () {
 
 function productDeleteEndpoint(string $id): TestResponse
 {
-    return deleteJson(route('products.destroy', $id));
+    return deleteJson(route('api.products.destroy', $id));
 }
 

@@ -98,7 +98,7 @@ describe('Product Categories attaching', function () {
 function productCategoryAttachmentEndpoint(string $id, array $categoriesIds = []): TestResponse
 {
     return putJson(
-        route('products.categories', $id), [
+        route('api.products.categories', $id), [
             'categories' => $categoriesIds
         ]
     );
