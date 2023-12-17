@@ -3,6 +3,18 @@
 In order to install all the project dependencies, please make sure to run `composer install`.
 This project requires **PHP ^8.1**
 
+# Video
+
+<div>
+    <a href="https://www.loom.com/share/3b669d9971b34f369b4bcdaa21ac512b">
+      <p>Abdelilah Lbardi - Tinyurl Assessment - Watch Video</p>
+    </a>
+    <a href="https://www.loom.com/share/3b669d9971b34f369b4bcdaa21ac512b">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/3b669d9971b34f369b4bcdaa21ac512b-1702838688014-with-play.gif">
+    </a>
+  </div>
+
+
 # Tests
 
 Tests can be executed by running the following command `php artisan test`
