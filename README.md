@@ -7,6 +7,8 @@ This project requires **PHP ^8.1**
 
 Tests can be executed by running the following command `php artisan test`
 
+`.env.testing` is the environment responsible for the tests. In case you want to prepare a mysql DB for testing, that can be done from there.
+
 ![tests](doc/tests.png)
 
 # Create Category
