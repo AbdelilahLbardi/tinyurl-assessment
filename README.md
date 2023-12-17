@@ -1,66 +1,192 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Installation
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+In order to install all the project dependencies, please make sure to run `composer install`.
+This project requires **PHP ^8.1**
 
-## About Laravel
+# Tests
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Tests can be executed by running the following command `php artisan test`
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+![tests](doc/tests.png)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# Create Category
 
-## Learning Laravel
+to create a category, you need to send a **POST** request to `/api/categories` endpoint. Below are the all the inputs
+informations.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+| params | required | Description      |
+|--------|----------|------------------|
+| name   | true     | The product name |
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Response example:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```json
+{
+    "data": {
+        "id": 173,
+        "name": "new category",
+        "created_at": "2023-12-17 14:40:16",
+        "updated_at": "2023-12-17 14:40:16"
+    }
+}
+```
 
-## Laravel Sponsors
+# Create Product
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+to create a product, you need to send a **POST** request to `/api/products` endpoint. Below are the all the inputs
+informations.
 
-### Premium Partners
+| params      | required | Description             |
+|-------------|----------|-------------------------|
+| name        | true     | The product name        |
+| description | true     | The product description |
+| price       | true     | The product price       |
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Response example:
 
-## Contributing
+```json
+{
+    "data": {
+        "id": 173,
+        "name": "new name",
+        "price": 100,
+        "description": "new description",
+        "viewed_at": null,
+        "created_at": "2023-12-17 14:40:16",
+        "updated_at": "2023-12-17 14:40:16",
+        "deleted_at": null
+    }
+}
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Show Product
 
-## Code of Conduct
+to show a product, you need to send a **GET** request to `/api/products/{id}` endpoint.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Response example:
 
-## Security Vulnerabilities
+```json
+{
+    "data": {
+        "id": 173,
+        "name": "new name",
+        "price": 100,
+        "description": "new description",
+        "viewed_at": null,
+        "created_at": "2023-12-17 14:40:16",
+        "updated_at": "2023-12-17 14:40:16",
+        "deleted_at": null
+    }
+}
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Update Product
 
-## License
+to update a product, you need to send a **PUT|PATCH** request to `/api/products/{id}` endpoint. Below are the all the
+inputs
+informations.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+| params      | required | Description             |
+|-------------|----------|-------------------------|
+| name        | true     | The product name        |
+| description | true     | The product description |
+| price       | true     | The product price       |
+
+Response example:
+
+```json
+{
+    "data": {
+        "id": 173,
+        "name": "new updated name",
+        "price": 1000,
+        "description": "new description description",
+        "viewed_at": "2023-12-17 14:42:12",
+        "created_at": "2023-12-17 14:40:16",
+        "updated_at": "2023-12-17 14:42:58",
+        "deleted_at": null
+    }
+}
+```
+
+# Delete Products
+
+to delete a product, you need to send a **DELETE** request to `/api/products/{id}` endpoint.
+The response will be a `204` with no content.
+
+# Generate Products
+
+to generate dummy data for products, you need to send a **POST** request to `/api/products/generate` endpoint.
+
+> [!CAUTION]
+> Generating dummy data requires the queue to be up and running. You can do so by running `php artisan queue:work`
+
+Response example:
+
+```json
+{
+    "message": "10000000 products will be available in your account shortly."
+}
+```
+
+# Attach Categories to Products
+
+to attach categories to products, you need to send a **PUT** request to `api/products/{products-id}/categories/attach`
+endpoint. Below are the all the inputs
+informations.
+
+| params     | required | Description                                        |
+|------------|----------|----------------------------------------------------|
+| categories | true     | array of categories to attach to the given product |
+
+Response example:
+
+```json
+{
+    "data": {
+        "id": 173,
+        "name": "new updated name",
+        "price": 1000,
+        "description": "new description description",
+        "categories": [
+            {
+                "id": 17,
+                "name": "new names",
+                "created_at": "2023-12-17 14:48:50",
+                "updated_at": "2023-12-17 14:48:50"
+            }
+        ],
+        "viewed_at": "2023-12-17 14:42:12",
+        "created_at": "2023-12-17 14:40:16",
+        "updated_at": "2023-12-17 14:44:12",
+        "deleted_at": "2023-12-17 14:44:12"
+    }
+}
+```
+
+# Listing and filtering products
+
+to list or filter products, you need to send a **GET** request to `api/products` endpoint. Below are the all the inputs
+informations. The products are sorted by top to Deleted. Deleted products will appear in the bottom.
+
+| Query param | values       | Description                        |
+|-------------|--------------|------------------------------------|
+| name        | ASC / DESC   | Sorts by name                      |
+| price       | ASC / DESC   | Sorts by price                     |
+| last-viewed | TRUE / FALSE | returns 10 latests viewed products |
+
+## POSTMAN collection
+
+You can import the following [collection](doc/tinyurl_postman_collection.json) to postman to have everything ready.
+
+> [!CAUTION]
+> Do not forget to change environment host variable
+
+# What could be done better
+
+Definitely the frontend design and UI if there was more time. 
+I tried to reflect a quality backend concentrated work.
+
+# Final word
+
+Thank you for giving me the chance to apply to this position.
