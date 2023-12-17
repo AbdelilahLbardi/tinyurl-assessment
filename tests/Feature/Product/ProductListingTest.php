@@ -123,7 +123,7 @@ describe('Products listing', function () {
 function productListEndpoint(array $filters = []): TestResponse
 {
     return getJson(
-        route('products.index') . '?' . http_build_query($filters)
+        route('api.products.index') . '?' . http_build_query($filters)
     );
 }
 

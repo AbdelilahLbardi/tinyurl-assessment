@@ -24,17 +24,22 @@ describe('Dummy products data generation', function () {
 
         assertDatabaseCount(Product::class, 0);
 
+        /*
+         * Fakes the chunk limit to reduce the test duration
+         */
+        config(['products.chunk_limit' => 100]);
+
         $generateProductsAction = resolve(GenerateProductsAction::class);
 
         $generateProductsAction->execute();
 
-        assertDatabaseCount(Product::class, GenerateProductsAction::LIMIT);
+        assertDatabaseCount(Product::class, config('products.chunk_limit'));
 
     });
 });
 
 function GenerateProductsEndpoint(): TestResponse
 {
-    return postJson(route('products.generate'));
+    return postJson(route('api.products.generate'));
 }
 
